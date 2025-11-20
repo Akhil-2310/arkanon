@@ -1,0 +1,274 @@
+{
+  "address": "0x7a2088a1bFc9d81c55368AE168C2C02570cB814F",
+  "abi": [
+    {
+      "inputs": [],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [],
+      "name": "SemaphoreVerifier__ArrayLengthMismatch",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "SemaphoreVerifier__CallerIsNotOwner",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "depth",
+          "type": "uint256"
+        }
+      ],
+      "name": "SemaphoreVerifier__InvalidDepth",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "depth",
+          "type": "uint256"
+        }
+      ],
+      "name": "SemaphoreVerifier__VerificationKeyAlreadySet",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "depth",
+          "type": "uint256"
+        }
+      ],
+      "name": "SemaphoreVerifier__VerificationKeyNotConfigured",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "SemaphoreVerifier__VerificationKeysLocked",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "depth",
+          "type": "uint256"
+        }
+      ],
+      "name": "isVerificationKeyConfigured",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "lockVerificationKeys",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint8[]",
+          "name": "depths",
+          "type": "uint8[]"
+        },
+        {
+          "internalType": "uint256[14][]",
+          "name": "points",
+          "type": "uint256[14][]"
+        }
+      ],
+      "name": "uploadVerificationKeys",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "verificationKeysLocked",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256[2]",
+          "name": "_pA",
+          "type": "uint256[2]"
+        },
+        {
+          "internalType": "uint256[2][2]",
+          "name": "_pB",
+          "type": "uint256[2][2]"
+        },
+        {
+          "internalType": "uint256[2]",
+          "name": "_pC",
+          "type": "uint256[2]"
+        },
+        {
+          "internalType": "uint256[4]",
+          "name": "_pubSignals",
+          "type": "uint256[4]"
+        },
+        {
+          "internalType": "uint256",
+          "name": "merkleTreeDepth",
+          "type": "uint256"
+        }
+      ],
+      "name": "verifyProof",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0xaca1113a3e24db2dc1a7b2d8760735b4bbe9c6306b1ec8955558ba42641804de",
+  "receipt": {
+    "to": null,
+    "from": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+    "contractAddress": "0x7a2088a1bFc9d81c55368AE168C2C02570cB814F",
+    "transactionIndex": 0,
+    "gasUsed": "640225",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0x0de07717822840324012ec74653df86612690f6a79f2fc5d70cb9caa21c815f9",
+    "transactionHash": "0xaca1113a3e24db2dc1a7b2d8760735b4bbe9c6306b1ec8955558ba42641804de",
+    "logs": [],
+    "blockNumber": 11750120,
+    "cumulativeGasUsed": "640225",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [],
+  "numDeployments": 1,
+  "solcInputHash": "acef67a9da7e2b1bcf8ddebe3a08ab0e",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.24+commit.e11b9ed9\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[],\"name\":\"SemaphoreVerifier__ArrayLengthMismatch\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"SemaphoreVerifier__CallerIsNotOwner\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"depth\",\"type\":\"uint256\"}],\"name\":\"SemaphoreVerifier__InvalidDepth\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"depth\",\"type\":\"uint256\"}],\"name\":\"SemaphoreVerifier__VerificationKeyAlreadySet\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"depth\",\"type\":\"uint256\"}],\"name\":\"SemaphoreVerifier__VerificationKeyNotConfigured\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"SemaphoreVerifier__VerificationKeysLocked\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"depth\",\"type\":\"uint256\"}],\"name\":\"isVerificationKeyConfigured\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"lockVerificationKeys\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint8[]\",\"name\":\"depths\",\"type\":\"uint8[]\"},{\"internalType\":\"uint256[14][]\",\"name\":\"points\",\"type\":\"uint256[14][]\"}],\"name\":\"uploadVerificationKeys\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"verificationKeysLocked\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256[2]\",\"name\":\"_pA\",\"type\":\"uint256[2]\"},{\"internalType\":\"uint256[2][2]\",\"name\":\"_pB\",\"type\":\"uint256[2][2]\"},{\"internalType\":\"uint256[2]\",\"name\":\"_pC\",\"type\":\"uint256[2]\"},{\"internalType\":\"uint256[4]\",\"name\":\"_pubSignals\",\"type\":\"uint256[4]\"},{\"internalType\":\"uint256\",\"name\":\"merkleTreeDepth\",\"type\":\"uint256\"}],\"name\":\"verifyProof\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/base/SemaphoreVerifier.sol\":\"SemaphoreVerifier\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"contracts/base/Constants.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity >=0.8.23 <0.9.0;\\n\\n/// @dev Minimum supported tree depth.\\nuint8 constant MIN_DEPTH = 1;\\n\\n/// @dev Maximum supported tree depth.\\nuint8 constant MAX_DEPTH = 32;\",\"keccak256\":\"0xf2fb3042be5cfe8d9aab2fbbb90d00d75c3c83ed12aa15a9e13b435d15cc4eb0\",\"license\":\"MIT\"},\"contracts/base/SemaphoreVerifier.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// Part of this file was generated with [snarkJS](https://github.com/iden3/snarkjs).\\n\\npragma solidity >=0.8.23 <0.9.0;\\n\\nimport {MIN_DEPTH, MAX_DEPTH} from \\\"./Constants.sol\\\";\\nimport {SemaphoreVerifierKeyPts} from \\\"./SemaphoreVerifierKeyPts.sol\\\";\\n\\ncontract SemaphoreVerifier {\\n    using SemaphoreVerifierKeyPts for SemaphoreVerifierKeyPts.Store;\\n\\n    // Scalar field size\\n    uint256 constant r = 21888242871839275222246405745257275088548364400416034343698204186575808495617;\\n    // Base field size\\n    uint256 constant q = 21888242871839275222246405745257275088696311157297823662689037894645226208583;\\n\\n    // Verification Key data\\n    uint256 constant alphax = 16428432848801857252194528405604668803277877773566238944394625302971855135431;\\n    uint256 constant alphay = 16846502678714586896801519656441059708016666274385668027902869494772365009666;\\n    uint256 constant betax1 = 3182164110458002340215786955198810119980427837186618912744689678939861918171;\\n    uint256 constant betax2 = 16348171800823588416173124589066524623406261996681292662100840445103873053252;\\n    uint256 constant betay1 = 4920802715848186258981584729175884379674325733638798907835771393452862684714;\\n    uint256 constant betay2 = 19687132236965066906216944365591810874384658708175106803089633851114028275753;\\n    uint256 constant gammax1 = 11559732032986387107991004021392285783925812861821192530917403151452391805634;\\n    uint256 constant gammax2 = 10857046999023057135944570762232829481370756359578518086990519993285655852781;\\n    uint256 constant gammay1 = 4082367875863433681332203403145435568316851327593401208105741076214120093531;\\n    uint256 constant gammay2 = 8495653923123431417604973247489272438418190587263600148770280649306958101930;\\n\\n    // Memory data\\n    uint16 constant pVk = 0;\\n    uint16 constant pPairing = 128;\\n\\n    uint16 constant pLastMem = 896;\\n\\n    error SemaphoreVerifier__CallerIsNotOwner();\\n    error SemaphoreVerifier__ArrayLengthMismatch();\\n    error SemaphoreVerifier__InvalidDepth(uint256 depth);\\n    error SemaphoreVerifier__VerificationKeyAlreadySet(uint256 depth);\\n    error SemaphoreVerifier__VerificationKeyNotConfigured(uint256 depth);\\n    error SemaphoreVerifier__VerificationKeysLocked();\\n\\n    address public immutable owner;\\n    bool public verificationKeysLocked;\\n\\n    mapping(uint256 => bool) private isDepthConfigured;\\n    SemaphoreVerifierKeyPts.Store private vkStore;\\n\\n    modifier onlyOwner() {\\n        if (msg.sender != owner) {\\n            revert SemaphoreVerifier__CallerIsNotOwner();\\n        }\\n        _;\\n    }\\n\\n    modifier whenMutable() {\\n        if (verificationKeysLocked) {\\n            revert SemaphoreVerifier__VerificationKeysLocked();\\n        }\\n        _;\\n    }\\n\\n    constructor() {\\n        owner = msg.sender;\\n    }\\n\\n    function uploadVerificationKeys(\\n        uint8[] calldata depths,\\n        uint256[14][] calldata points\\n    ) external onlyOwner whenMutable {\\n        uint256 len = depths.length;\\n\\n        if (len == 0 || len != points.length) {\\n            revert SemaphoreVerifier__ArrayLengthMismatch();\\n        }\\n\\n        for (uint256 idx = 0; idx < len; ++idx) {\\n            uint256 depth = depths[idx];\\n            _assertDepth(depth);\\n\\n            if (isDepthConfigured[depth]) {\\n                revert SemaphoreVerifier__VerificationKeyAlreadySet(depth);\\n            }\\n\\n            vkStore.set(depth, points[idx]);\\n            isDepthConfigured[depth] = true;\\n        }\\n    }\\n\\n    function lockVerificationKeys() external onlyOwner whenMutable {\\n        for (uint256 depth = MIN_DEPTH; depth <= MAX_DEPTH; depth++) {\\n            if (!isDepthConfigured[depth]) {\\n                revert SemaphoreVerifier__VerificationKeyNotConfigured(depth);\\n            }\\n        }\\n\\n        verificationKeysLocked = true;\\n    }\\n\\n    function isVerificationKeyConfigured(uint256 depth) external view returns (bool) {\\n        _assertDepth(depth);\\n        return isDepthConfigured[depth];\\n    }\\n\\n    function verifyProof(\\n        uint[2] calldata _pA,\\n        uint[2][2] calldata _pB,\\n        uint[2] calldata _pC,\\n        uint[4] calldata _pubSignals,\\n        uint merkleTreeDepth\\n    ) external view returns (bool) {\\n        _assertDepth(merkleTreeDepth);\\n\\n        if (!isDepthConfigured[merkleTreeDepth]) {\\n            revert SemaphoreVerifier__VerificationKeyNotConfigured(merkleTreeDepth);\\n        }\\n\\n        uint256[14] memory _vkPoints = vkStore.get(merkleTreeDepth);\\n\\n        assembly {\\n            function checkField(v) {\\n                if iszero(lt(v, r)) {\\n                    mstore(0, 0)\\n                    return(0, 0x20)\\n                }\\n            }\\n\\n            // G1 function to multiply a G1 value(x,y) to value in an address\\n            function g1_mulAccC(pR, x, y, s) {\\n                let success\\n                let mIn := mload(0x40)\\n                mstore(mIn, x)\\n                mstore(add(mIn, 32), y)\\n                mstore(add(mIn, 64), s)\\n\\n                // ecMul gas cost is fixed at 6000. Add 33.3% gas for safety buffer.\\n                // Last checked in 2024 Oct, evm codename Cancun\\n                // ref: https://www.evm.codes/precompiled?fork=cancun#0x07\\n                success := staticcall(8000, 7, mIn, 96, mIn, 64)\\n\\n                if iszero(success) {\\n                    mstore(0, 0)\\n                    return(0, 0x20)\\n                }\\n\\n                mstore(add(mIn, 64), mload(pR))\\n                mstore(add(mIn, 96), mload(add(pR, 32)))\\n\\n                // ecAdd gas cost is fixed at 150. Add 33.3% gas for safety buffer.\\n                // Last checked in 2024 Oct, evm codename Cancun\\n                // ref: https://www.evm.codes/precompiled?fork=cancun#0x06\\n                success := staticcall(200, 6, mIn, 128, pR, 64)\\n\\n                if iszero(success) {\\n                    mstore(0, 0)\\n                    return(0, 0x20)\\n                }\\n            }\\n\\n            function checkPairing(pA, pB, pC, pubSignals, pMem, vkPoints) -> isOk {\\n                let _pPairing := add(pMem, pPairing)\\n                let _pVk := add(pMem, pVk)\\n\\n                mstore(_pVk, mload(add(vkPoints, 128)))\\n                mstore(add(_pVk, 32), mload(add(vkPoints, 160)))\\n\\n                // Compute the linear combination vk_x\\n\\n                g1_mulAccC(_pVk, mload(add(vkPoints, 192)), mload(add(vkPoints, 224)), calldataload(add(pubSignals, 0)))\\n\\n                g1_mulAccC(\\n                    _pVk,\\n                    mload(add(vkPoints, 256)),\\n                    mload(add(vkPoints, 288)),\\n                    calldataload(add(pubSignals, 32))\\n                )\\n\\n                g1_mulAccC(\\n                    _pVk,\\n                    mload(add(vkPoints, 320)),\\n                    mload(add(vkPoints, 352)),\\n                    calldataload(add(pubSignals, 64))\\n                )\\n\\n                g1_mulAccC(\\n                    _pVk,\\n                    mload(add(vkPoints, 384)),\\n                    mload(add(vkPoints, 416)),\\n                    calldataload(add(pubSignals, 96))\\n                )\\n\\n                // -A\\n                mstore(_pPairing, calldataload(pA))\\n                mstore(add(_pPairing, 32), mod(sub(q, calldataload(add(pA, 32))), q))\\n\\n                // B\\n                mstore(add(_pPairing, 64), calldataload(pB))\\n                mstore(add(_pPairing, 96), calldataload(add(pB, 32)))\\n                mstore(add(_pPairing, 128), calldataload(add(pB, 64)))\\n                mstore(add(_pPairing, 160), calldataload(add(pB, 96)))\\n\\n                // alpha1\\n                mstore(add(_pPairing, 192), alphax)\\n                mstore(add(_pPairing, 224), alphay)\\n\\n                // beta2\\n                mstore(add(_pPairing, 256), betax1)\\n                mstore(add(_pPairing, 288), betax2)\\n                mstore(add(_pPairing, 320), betay1)\\n                mstore(add(_pPairing, 352), betay2)\\n\\n                // vk_x\\n                mstore(add(_pPairing, 384), mload(add(pMem, pVk)))\\n                mstore(add(_pPairing, 416), mload(add(pMem, add(pVk, 32))))\\n\\n                // gamma2\\n                mstore(add(_pPairing, 448), gammax1)\\n                mstore(add(_pPairing, 480), gammax2)\\n                mstore(add(_pPairing, 512), gammay1)\\n                mstore(add(_pPairing, 544), gammay2)\\n\\n                // C\\n                mstore(add(_pPairing, 576), calldataload(pC))\\n                mstore(add(_pPairing, 608), calldataload(add(pC, 32)))\\n\\n                // delta2\\n                mstore(add(_pPairing, 640), mload(vkPoints))\\n                mstore(add(_pPairing, 672), mload(add(vkPoints, 32)))\\n                mstore(add(_pPairing, 704), mload(add(vkPoints, 64)))\\n                mstore(add(_pPairing, 736), mload(add(vkPoints, 96)))\\n\\n                // ecPairing gas cost at 181000 given 768 bytes input. Add 33.3% gas for safety buffer.\\n                // Last checked in 2024 Oct, evm codename Cancun\\n                // ref: https://www.evm.codes/precompiled?fork=cancun#0x08\\n                let success := staticcall(241333, 8, _pPairing, 768, _pPairing, 0x20)\\n\\n                isOk := and(success, mload(_pPairing))\\n            }\\n\\n            let pMem := mload(0x40)\\n            mstore(0x40, add(pMem, pLastMem))\\n\\n            // Validate that all evaluations \\u2208 F\\n\\n            checkField(calldataload(add(_pubSignals, 0)))\\n\\n            checkField(calldataload(add(_pubSignals, 32)))\\n\\n            checkField(calldataload(add(_pubSignals, 64)))\\n\\n            checkField(calldataload(add(_pubSignals, 96)))\\n\\n            checkField(calldataload(add(_pubSignals, 128)))\\n\\n            // Validate all evaluations\\n            let isValid := checkPairing(_pA, _pB, _pC, _pubSignals, pMem, _vkPoints)\\n\\n            mstore(0, isValid)\\n            return(0, 0x20)\\n        }\\n    }\\n\\n    function _assertDepth(uint256 depth) private pure {\\n        if (depth < MIN_DEPTH || depth > MAX_DEPTH) {\\n            revert SemaphoreVerifier__InvalidDepth(depth);\\n        }\\n    }\\n}\\n\",\"keccak256\":\"0x357e159276960535971eba5a5638c4465220c9b1819036f7002f08e4081cb8f7\",\"license\":\"MIT\"},\"contracts/base/SemaphoreVerifierKeyPts.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity >=0.8.23 <0.9.0;\\n\\n/// @title SemaphoreVerifierKeyPts\\n/// @notice Minimal storage helper used by the verifier to persist vk points per Merkle depth.\\nlibrary SemaphoreVerifierKeyPts {\\n    uint256 internal constant SET_SIZE = 14;\\n\\n    struct Store {\\n        mapping(uint256 => uint256[SET_SIZE]) data;\\n    }\\n\\n    function set(Store storage store, uint256 depth, uint256[SET_SIZE] calldata values) internal {\\n        uint256[SET_SIZE] storage slot = store.data[depth];\\n\\n        unchecked {\\n            for (uint256 idx = 0; idx < SET_SIZE; ++idx) {\\n                slot[idx] = values[idx];\\n            }\\n        }\\n    }\\n\\n    function get(Store storage store, uint256 depth) internal view returns (uint256[SET_SIZE] memory values) {\\n        uint256[SET_SIZE] storage slot = store.data[depth];\\n\\n        unchecked {\\n            for (uint256 idx = 0; idx < SET_SIZE; ++idx) {\\n                values[idx] = slot[idx];\\n            }\\n        }\\n    }\\n}\\n\",\"keccak256\":\"0xab2f0c89155050b9eccf05ef6543e7d1369d074f982812c2f10e9e43b00bb5f6\",\"license\":\"MIT\"}},\"version\":1}",
+  "bytecode": "0x60a060405234801561001057600080fd5b5033608052608051610aa261003d6000396000818160a10152818161013701526106470152610aa26000f3fe608060405234801561001057600080fd5b50600436106100625760003560e01c8063228f851b146100675780634df02ebb1461008f5780638da5cb5b1461009c578063927ffcb8146100db578063a23f0199146100e5578063e6c55536146100f8575b600080fd5b61007a610075366004610898565b61010b565b60405190151581526020015b60405180910390f35b60005461007a9060ff1681565b6100c37f000000000000000000000000000000000000000000000000000000000000000081565b6040516001600160a01b039091168152602001610086565b6100e361012c565b005b61007a6100f33660046108d9565b6101fd565b6100e361010636600461093c565b61063c565b6000610116826107a1565b5060009081526001602052604090205460ff1690565b336001600160a01b037f000000000000000000000000000000000000000000000000000000000000000016146101755760405163efbaa27d60e01b815260040160405180910390fd5b60005460ff161561019957604051633600f83560e01b815260040160405180910390fd5b60015b602081116101ed5760008181526001602052604090205460ff166101db57604051636f16297560e11b8152600481018290526024015b60405180910390fd5b806101e581610a05565b91505061019c565b506000805460ff19166001179055565b6000610208826107a1565b60008281526001602052604090205460ff1661023a57604051636f16297560e11b8152600481018390526024016101d2565b60006102476002846107d1565b90506105d6565b7f30644e72e131a029b85045b68181585d2833e84879b9709143e1f593f0000001811061027f576000805260206000f35b50565b60006040518381528460208201528560408201526040816060836007611f40fa9150816102b3576000805260206000f35b8251604082015260208301516060820152604083608083600660c8fa915050806102e1576000805260206000f35b5050505050565b600060808601600087016080890151815260a0890151602082015261031b600088013560e08b015160c08c015184610282565b61033560208801356101208b01516101008c015184610282565b61034f60408801356101608b01516101408c015184610282565b61036960608801356101a08b01516101808c015184610282565b50823581527f30644e72e131a029b85045b68181585d97816a916871ca8d3c208c16d87cfd4760208401357f30644e72e131a029b85045b68181585d97816a916871ca8d3c208c16d87cfd4703066020820152833560408201526020840135606082015260408401356080820152606084013560a08201527f245229d9b076b3c0e8a4d70bde8c1cccffa08a9fae7557b165b3b0dbd653e2c760c08201527f253ec85988dbb84e46e94b5efa3373b47a000b4ac6c86b2d4b798d274a18230260e08201527f07090a82e8fabbd39299be24705b92cf208ee8b3487f6f2b39ff27978a29a1db6101008201527f2424bcc1f60a5472685fd50705b2809626e170120acaf441e133a2bd5e61d2446101208201527f0ae1135cffdaf227c5dc266740607aa930bc3bd92ddc2b135086d9da2dfd3e2a6101408201527f2b86859fd3d55c9d150fb3f0aeba798826493dd73d357ab0f9fdaced9fc81829610160820152600087015161018082015260206000018701516101a08201527f198e9393920d483a7260bfb731fb5d25f1aa493335a9e71297e485b7aef312c26101c08201527f1800deef121f1e76426a00665e5c4479674322d4f75edadd46debd5cd992f6ed6101e08201527f090689d0585ff075ec9e99ad690c3395bc4b313370b38ef355acdadcd122975b6102008201527f12c85ea5db8c6deb4aab71808dcb408fe3d1e7690c43d37b4ce6cc0166fa7daa61022082015284356102408201526020850135610260820152875161028082015260208801516102a082015260408801516102c082015260608801516102e08201526020816103008360086203aeb5fa905116979650505050505050565b60405161038081016040526105ee600086013561024e565b6105fb602086013561024e565b610608604086013561024e565b610615606086013561024e565b610622608086013561024e565b610630828287898b8d6102e8565b90508060005260206000f35b336001600160a01b037f000000000000000000000000000000000000000000000000000000000000000016146106855760405163efbaa27d60e01b815260040160405180910390fd5b60005460ff16156106a957604051633600f83560e01b815260040160405180910390fd5b828015806106b75750808214155b156106d557604051630b1335ed60e21b815260040160405180910390fd5b60005b818110156107995760008686838181106106f4576106f4610a2c565b90506020020160208101906107099190610a42565b60ff169050610717816107a1565b60008181526001602052604090205460ff161561074a5760405163139234c560e21b8152600481018290526024016101d2565b6107788186868581811061076057610760610a2c565b90506101c00201600261082d9092919063ffffffff16565b6000908152600160208190526040909120805460ff191682179055016106d8565b505050505050565b60018110806107b05750602081115b1561027f57604051632282297b60e11b8152600481018290526024016101d2565b6107d9610879565b6000828152602084905260408120905b600e811015610825578181600e811061080457610804610a2c565b01548382600e811061081857610818610a2c565b60200201526001016107e9565b505092915050565b6000828152602084905260408120905b600e8110156102e1578281600e811061085857610858610a2c565b60200201358282600e811061086f5761086f610a2c565b015560010161083d565b604051806101c00160405280600e906020820280368337509192915050565b6000602082840312156108aa57600080fd5b5035919050565b80604081018310156108c257600080fd5b92915050565b80608081018310156108c257600080fd5b60008060008060006101a086880312156108f257600080fd5b6108fc87876108b1565b945061090b87604088016108c8565b935061091a8760c088016108b1565b925061092a8761010088016108c8565b94979396509194610180013592915050565b6000806000806040858703121561095257600080fd5b843567ffffffffffffffff8082111561096a57600080fd5b818701915087601f83011261097e57600080fd5b81358181111561098d57600080fd5b8860208260051b85010111156109a257600080fd5b6020928301965094509086013590808211156109bd57600080fd5b818701915087601f8301126109d157600080fd5b8135818111156109e057600080fd5b8860206101c0830285010111156109f657600080fd5b95989497505060200194505050565b600060018201610a2557634e487b7160e01b600052601160045260246000fd5b5060010190565b634e487b7160e01b600052603260045260246000fd5b600060208284031215610a5457600080fd5b813560ff81168114610a6557600080fd5b939250505056fea2646970667358221220e46cf978f7094a83c4a3cf7b562ef22d40275f8d5ab9afdc65b23eab6b2385bc64736f6c63430008180033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100625760003560e01c8063228f851b146100675780634df02ebb1461008f5780638da5cb5b1461009c578063927ffcb8146100db578063a23f0199146100e5578063e6c55536146100f8575b600080fd5b61007a610075366004610898565b61010b565b60405190151581526020015b60405180910390f35b60005461007a9060ff1681565b6100c37f000000000000000000000000000000000000000000000000000000000000000081565b6040516001600160a01b039091168152602001610086565b6100e361012c565b005b61007a6100f33660046108d9565b6101fd565b6100e361010636600461093c565b61063c565b6000610116826107a1565b5060009081526001602052604090205460ff1690565b336001600160a01b037f000000000000000000000000000000000000000000000000000000000000000016146101755760405163efbaa27d60e01b815260040160405180910390fd5b60005460ff161561019957604051633600f83560e01b815260040160405180910390fd5b60015b602081116101ed5760008181526001602052604090205460ff166101db57604051636f16297560e11b8152600481018290526024015b60405180910390fd5b806101e581610a05565b91505061019c565b506000805460ff19166001179055565b6000610208826107a1565b60008281526001602052604090205460ff1661023a57604051636f16297560e11b8152600481018390526024016101d2565b60006102476002846107d1565b90506105d6565b7f30644e72e131a029b85045b68181585d2833e84879b9709143e1f593f0000001811061027f576000805260206000f35b50565b60006040518381528460208201528560408201526040816060836007611f40fa9150816102b3576000805260206000f35b8251604082015260208301516060820152604083608083600660c8fa915050806102e1576000805260206000f35b5050505050565b600060808601600087016080890151815260a0890151602082015261031b600088013560e08b015160c08c015184610282565b61033560208801356101208b01516101008c015184610282565b61034f60408801356101608b01516101408c015184610282565b61036960608801356101a08b01516101808c015184610282565b50823581527f30644e72e131a029b85045b68181585d97816a916871ca8d3c208c16d87cfd4760208401357f30644e72e131a029b85045b68181585d97816a916871ca8d3c208c16d87cfd4703066020820152833560408201526020840135606082015260408401356080820152606084013560a08201527f245229d9b076b3c0e8a4d70bde8c1cccffa08a9fae7557b165b3b0dbd653e2c760c08201527f253ec85988dbb84e46e94b5efa3373b47a000b4ac6c86b2d4b798d274a18230260e08201527f07090a82e8fabbd39299be24705b92cf208ee8b3487f6f2b39ff27978a29a1db6101008201527f2424bcc1f60a5472685fd50705b2809626e170120acaf441e133a2bd5e61d2446101208201527f0ae1135cffdaf227c5dc266740607aa930bc3bd92ddc2b135086d9da2dfd3e2a6101408201527f2b86859fd3d55c9d150fb3f0aeba798826493dd73d357ab0f9fdaced9fc81829610160820152600087015161018082015260206000018701516101a08201527f198e9393920d483a7260bfb731fb5d25f1aa493335a9e71297e485b7aef312c26101c08201527f1800deef121f1e76426a00665e5c4479674322d4f75edadd46debd5cd992f6ed6101e08201527f090689d0585ff075ec9e99ad690c3395bc4b313370b38ef355acdadcd122975b6102008201527f12c85ea5db8c6deb4aab71808dcb408fe3d1e7690c43d37b4ce6cc0166fa7daa61022082015284356102408201526020850135610260820152875161028082015260208801516102a082015260408801516102c082015260608801516102e08201526020816103008360086203aeb5fa905116979650505050505050565b60405161038081016040526105ee600086013561024e565b6105fb602086013561024e565b610608604086013561024e565b610615606086013561024e565b610622608086013561024e565b610630828287898b8d6102e8565b90508060005260206000f35b336001600160a01b037f000000000000000000000000000000000000000000000000000000000000000016146106855760405163efbaa27d60e01b815260040160405180910390fd5b60005460ff16156106a957604051633600f83560e01b815260040160405180910390fd5b828015806106b75750808214155b156106d557604051630b1335ed60e21b815260040160405180910390fd5b60005b818110156107995760008686838181106106f4576106f4610a2c565b90506020020160208101906107099190610a42565b60ff169050610717816107a1565b60008181526001602052604090205460ff161561074a5760405163139234c560e21b8152600481018290526024016101d2565b6107788186868581811061076057610760610a2c565b90506101c00201600261082d9092919063ffffffff16565b6000908152600160208190526040909120805460ff191682179055016106d8565b505050505050565b60018110806107b05750602081115b1561027f57604051632282297b60e11b8152600481018290526024016101d2565b6107d9610879565b6000828152602084905260408120905b600e811015610825578181600e811061080457610804610a2c565b01548382600e811061081857610818610a2c565b60200201526001016107e9565b505092915050565b6000828152602084905260408120905b600e8110156102e1578281600e811061085857610858610a2c565b60200201358282600e811061086f5761086f610a2c565b015560010161083d565b604051806101c00160405280600e906020820280368337509192915050565b6000602082840312156108aa57600080fd5b5035919050565b80604081018310156108c257600080fd5b92915050565b80608081018310156108c257600080fd5b60008060008060006101a086880312156108f257600080fd5b6108fc87876108b1565b945061090b87604088016108c8565b935061091a8760c088016108b1565b925061092a8761010088016108c8565b94979396509194610180013592915050565b6000806000806040858703121561095257600080fd5b843567ffffffffffffffff8082111561096a57600080fd5b818701915087601f83011261097e57600080fd5b81358181111561098d57600080fd5b8860208260051b85010111156109a257600080fd5b6020928301965094509086013590808211156109bd57600080fd5b818701915087601f8301126109d157600080fd5b8135818111156109e057600080fd5b8860206101c0830285010111156109f657600080fd5b95989497505060200194505050565b600060018201610a2557634e487b7160e01b600052601160045260246000fd5b5060010190565b634e487b7160e01b600052603260045260246000fd5b600060208284031215610a5457600080fd5b813560ff81168114610a6557600080fd5b939250505056fea2646970667358221220e46cf978f7094a83c4a3cf7b562ef22d40275f8d5ab9afdc65b23eab6b2385bc64736f6c63430008180033",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 1919,
+        "contract": "contracts/base/SemaphoreVerifier.sol:SemaphoreVerifier",
+        "label": "verificationKeysLocked",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_bool"
+      },
+      {
+        "astId": 1923,
+        "contract": "contracts/base/SemaphoreVerifier.sol:SemaphoreVerifier",
+        "label": "isDepthConfigured",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_mapping(t_uint256,t_bool)"
+      },
+      {
+        "astId": 1926,
+        "contract": "contracts/base/SemaphoreVerifier.sol:SemaphoreVerifier",
+        "label": "vkStore",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_struct(Store)2173_storage"
+      }
+    ],
+    "types": {
+      "t_array(t_uint256)14_storage": {
+        "base": "t_uint256",
+        "encoding": "inplace",
+        "label": "uint256[14]",
+        "numberOfBytes": "448"
+      },
+      "t_bool": {
+        "encoding": "inplace",
+        "label": "bool",
+        "numberOfBytes": "1"
+      },
+      "t_mapping(t_uint256,t_array(t_uint256)14_storage)": {
+        "encoding": "mapping",
+        "key": "t_uint256",
+        "label": "mapping(uint256 => uint256[14])",
+        "numberOfBytes": "32",
+        "value": "t_array(t_uint256)14_storage"
+      },
+      "t_mapping(t_uint256,t_bool)": {
+        "encoding": "mapping",
+        "key": "t_uint256",
+        "label": "mapping(uint256 => bool)",
+        "numberOfBytes": "32",
+        "value": "t_bool"
+      },
+      "t_struct(Store)2173_storage": {
+        "encoding": "inplace",
+        "label": "struct SemaphoreVerifierKeyPts.Store",
+        "members": [
+          {
+            "astId": 2172,
+            "contract": "contracts/base/SemaphoreVerifier.sol:SemaphoreVerifier",
+            "label": "data",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_mapping(t_uint256,t_array(t_uint256)14_storage)"
+          }
+        ],
+        "numberOfBytes": "32"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      }
+    }
+  }
+}
