@@ -8,7 +8,8 @@ import { getMetadata } from "~~/utils/scaffold-eth/getMetadata";
 
 export const metadata = getMetadata({
   title: "ArkAnon - Anonymous Social Platform",
-  description: "A privacy-preserving social platform powered by zero-knowledge proofs. Create groups, post anonymously, vote privately.",
+  description:
+    "A privacy-preserving social platform powered by zero-knowledge proofs. Create groups, post anonymously, vote privately.",
 });
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

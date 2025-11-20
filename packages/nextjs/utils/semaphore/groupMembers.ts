@@ -1,8 +1,8 @@
 import { createPublicClient, http } from "viem";
 import deployedContracts from "~~/contracts/deployedContracts";
 import scaffoldConfig from "~~/scaffold.config";
-import { getTargetNetworks } from "~~/utils/scaffold-eth/networks";
 import { fetchLogsInChunks } from "~~/utils/scaffold-eth/fetchLogsInChunks";
+import { getTargetNetworks } from "~~/utils/scaffold-eth/networks";
 
 /**
  * Fetch all members of a group by listening to MemberJoined events
@@ -38,7 +38,7 @@ export async function fetchGroupMembers(registryId: number): Promise<bigint[]> {
 
     // Get current block number for chunked fetching
     const latestBlock = await client.getBlockNumber();
-    
+
     // Start from last 10k blocks (about 8 hours on Scroll) - this covers all recent activity
     // Contract was just deployed, so all members will be in recent blocks
     const fromBlock = latestBlock > 10000n ? latestBlock - 10000n : 0n;

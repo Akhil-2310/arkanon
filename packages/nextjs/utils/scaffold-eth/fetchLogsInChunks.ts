@@ -1,4 +1,4 @@
-import { PublicClient, GetLogsParameters, Log } from "viem";
+import { GetLogsParameters, Log, PublicClient } from "viem";
 
 /**
  * Fetch logs in chunks to avoid "block range too large" errors
@@ -33,13 +33,16 @@ export async function fetchLogsInChunks<TAbiEvent extends any = undefined>(
   }
 
   // Otherwise, fetch in chunks
-  console.log(`📊 Fetching logs from block ${fromBlock} to ${latestBlock} (${totalBlocks} blocks) in chunks of ${chunkSize}`);
+  console.log(
+    `📊 Fetching logs from block ${fromBlock} to ${latestBlock} (${totalBlocks} blocks) in chunks of ${chunkSize}`,
+  );
   const allLogs: Log<bigint, number, false, TAbiEvent>[] = [];
   let currentBlock = fromBlock;
   let chunkIndex = 0;
 
   while (currentBlock <= latestBlock) {
-    const endBlock = currentBlock + BigInt(chunkSize) - 1n > latestBlock ? latestBlock : currentBlock + BigInt(chunkSize) - 1n;
+    const endBlock =
+      currentBlock + BigInt(chunkSize) - 1n > latestBlock ? latestBlock : currentBlock + BigInt(chunkSize) - 1n;
     chunkIndex++;
 
     console.log(`  📦 Chunk ${chunkIndex}: fetching blocks ${currentBlock} to ${endBlock}`);
@@ -57,7 +60,7 @@ export async function fetchLogsInChunks<TAbiEvent extends any = undefined>(
       // If we still hit block range limits, try with smaller chunk size
       if (error?.message?.includes("block range") || error?.details?.includes("block range")) {
         console.warn(`Block range still too large, retrying with smaller chunks from ${currentBlock} to ${endBlock}`);
-        
+
         // Recursively fetch with half the chunk size
         const smallerChunkLogs = await fetchLogsInChunks(
           client,
@@ -68,7 +71,7 @@ export async function fetchLogsInChunks<TAbiEvent extends any = undefined>(
           } as any,
           Math.floor(chunkSize / 2),
         );
-        
+
         allLogs.push(...smallerChunkLogs);
       } else {
         throw error;
@@ -81,4 +84,3 @@ export async function fetchLogsInChunks<TAbiEvent extends any = undefined>(
   console.log(`✅ Finished fetching logs: ${allLogs.length} total events found`);
   return allLogs;
 }
-

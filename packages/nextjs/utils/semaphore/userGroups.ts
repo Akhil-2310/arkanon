@@ -1,8 +1,8 @@
 import { createPublicClient, http } from "viem";
 import deployedContracts from "~~/contracts/deployedContracts";
 import scaffoldConfig from "~~/scaffold.config";
-import { getTargetNetworks } from "~~/utils/scaffold-eth/networks";
 import { fetchLogsInChunks } from "~~/utils/scaffold-eth/fetchLogsInChunks";
+import { getTargetNetworks } from "~~/utils/scaffold-eth/networks";
 
 export type GroupWithRegistryId = {
   registryId: number;
@@ -46,7 +46,7 @@ export async function fetchUserGroups(userAddress: string): Promise<GroupWithReg
 
     // Get current block number
     const latestBlock = await client.getBlockNumber();
-    
+
     // Only scan last 10,000 blocks (about 8 hours on Scroll) - much faster!
     // If you joined a group, it's probably recent anyway
     const fromBlock = latestBlock - 10000n > 0n ? latestBlock - 10000n : 0n;

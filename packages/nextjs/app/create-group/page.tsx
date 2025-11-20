@@ -3,8 +3,8 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
-import { useAccount, usePublicClient } from "wagmi";
-import { useScaffoldWriteContract, useScaffoldReadContract } from "~~/hooks/scaffold-eth";
+import { useAccount } from "wagmi";
+import { useScaffoldReadContract, useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
 import { useStoreGroupOnArkiv } from "~~/hooks/useArkivGroups";
 
 export default function CreateGroup() {
@@ -15,7 +15,6 @@ export default function CreateGroup() {
   const [isCreating, setIsCreating] = useState(false);
   const router = useRouter();
   const { address } = useAccount();
-  const publicClient = usePublicClient();
 
   const { writeContractAsync: writeWhispAsync } = useScaffoldWriteContract({
     contractName: "Whisp",
@@ -49,7 +48,7 @@ export default function CreateGroup() {
     try {
       // Step 1: Create group on Scroll Sepolia (Semaphore)
       console.log("📝 Creating group on Scroll Sepolia...");
-      const tx = await writeWhispAsync({
+      await writeWhispAsync({
         functionName: "createGroup",
         args: [name, description, imageUrl, category],
       });
@@ -139,11 +138,7 @@ export default function CreateGroup() {
           disabled={isCreating || !name.trim() || !description.trim()}
           className="btn btn-primary w-full"
         >
-          {isCreating
-            ? isStoring
-              ? "📦 Storing on Arkiv..."
-              : "⚡ Creating on Scroll..."
-            : "Create Group"}
+          {isCreating ? (isStoring ? "📦 Storing on Arkiv..." : "⚡ Creating on Scroll...") : "Create Group"}
         </button>
 
         {/* Hint text */}

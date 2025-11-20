@@ -10,7 +10,7 @@ import { useDeployedContractInfo } from "~~/hooks/scaffold-eth";
 // Component to display a single joined group
 function MyGroupCard({ registryId }: { registryId: number }) {
   const router = useRouter();
-  
+
   // Fetch all group data from contract (includes metadata now!)
   const { data: groupData } = useScaffoldReadContract({
     contractName: "Whisp",
@@ -19,8 +19,8 @@ function MyGroupCard({ registryId }: { registryId: number }) {
   });
 
   if (!groupData) return null;
-  
-  const [groupId, creator, createdAt, exists, name, description, imageUrl, category] = groupData as readonly [
+
+  const [, , createdAt, exists, name, description, imageUrl, category] = groupData as readonly [
     bigint,
     string,
     bigint,
@@ -28,7 +28,7 @@ function MyGroupCard({ registryId }: { registryId: number }) {
     string,
     string,
     string,
-    string
+    string,
   ];
   if (!exists) return null;
 
@@ -53,10 +53,7 @@ function MyGroupCard({ registryId }: { registryId: number }) {
         <button className="btn btn-primary btn-sm" onClick={() => router.push(`/group/${registryId}`)}>
           View Group
         </button>
-        <button
-          className="btn btn-outline btn-sm"
-          onClick={() => router.push(`/group/${registryId}/create-post`)}
-        >
+        <button className="btn btn-outline btn-sm" onClick={() => router.push(`/group/${registryId}/create-post`)}>
           Create Post
         </button>
       </div>
@@ -160,9 +157,7 @@ export default function MyGroups() {
             </div>
           </div>
         ) : (
-          myGroupIds.map(registryId => (
-            <MyGroupCard key={registryId} registryId={registryId} />
-          ))
+          myGroupIds.map(registryId => <MyGroupCard key={registryId} registryId={registryId} />)
         )}
       </section>
     </main>

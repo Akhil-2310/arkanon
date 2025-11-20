@@ -1,23 +1,22 @@
 /**
  * Arkiv Client for Whisp (Read-Only)
- * 
+ *
  * Arkiv is an on-chain data storage layer where we store group metadata as entities.
  * Each entity has attributes, payload, and expiration time.
- * 
+ *
  * ⚠️ IMPORTANT: Write operations are handled server-side for security.
  * This client only handles READ operations.
- * 
+ *
  * Official docs: https://arkiv.network
  */
-
-import { createPublicClient, http } from '@arkiv-network/sdk';
-import { bytesToString } from '@arkiv-network/sdk/utils';
-import { mendoza } from '@arkiv-network/sdk/chains';
-import { eq } from '@arkiv-network/sdk/query';
-import type { Address } from 'viem';
+import { createPublicClient, http } from "@arkiv-network/sdk";
+import { mendoza } from "@arkiv-network/sdk/chains";
+import { eq } from "@arkiv-network/sdk/query";
+import { bytesToString } from "@arkiv-network/sdk/utils";
+import type { Address } from "viem";
 
 // Arkiv Mendoza Testnet RPC
-const ARKIV_RPC = 'https://mendoza.hoodi.arkiv.network/rpc';
+const ARKIV_RPC = "https://mendoza.hoodi.arkiv.network/rpc";
 
 /**
  * Create Arkiv public client for reading entities
@@ -55,11 +54,11 @@ export interface SignalMetadata {
 /**
  * NOTE: Write operations (storeGroupOnArkiv, storeSignalOnArkiv) are now
  * handled server-side via API routes for security.
- * 
+ *
  * See:
  * - /app/api/arkiv/store-group/route.ts
  * - /app/api/arkiv/store-signal/route.ts
- * 
+ *
  * Use the hooks from useArkivGroups.ts instead:
  * - useStoreGroupOnArkiv()
  * - useStoreSignalOnArkiv()
@@ -74,32 +73,24 @@ export async function fetchAllGroupsFromArkiv(
   category?: string,
 ) {
   try {
-    const whereConditions = [
-      eq('type', 'whisp-group'),
-      eq('contractAddress', contractAddress.toLowerCase()),
-    ];
+    const whereConditions = [eq("type", "whisp-group"), eq("contractAddress", contractAddress.toLowerCase())];
 
     if (category) {
-      whereConditions.push(eq('category', category));
+      whereConditions.push(eq("category", category));
     }
 
-    console.log('🔍 Querying Arkiv for groups:', {
+    console.log("🔍 Querying Arkiv for groups:", {
       contractAddress: contractAddress.toLowerCase(),
       category,
     });
 
-    const result = await publicClient
-      .buildQuery()
-      .where(whereConditions)
-      .fetch();
+    const result = await publicClient.buildQuery().where(whereConditions).fetch();
 
     console.log(`✅ Found ${result.entities.length} groups on Arkiv`);
 
     return result.entities.map(entity => {
       const payload = JSON.parse(bytesToString(entity.payload));
-      const attrs = Object.fromEntries(
-        entity.attributes.map(a => [a.key, a.value])
-      );
+      const attrs = Object.fromEntries(entity.attributes.map(a => [a.key, a.value]));
 
       return {
         entityKey: entity.entityKey,
@@ -115,7 +106,7 @@ export async function fetchAllGroupsFromArkiv(
       };
     });
   } catch (error) {
-    console.error('❌ Error fetching all groups from Arkiv:', error);
+    console.error("❌ Error fetching all groups from Arkiv:", error);
     return [];
   }
 }
@@ -132,9 +123,9 @@ export async function fetchGroupByRegistryId(
     const result = await publicClient
       .buildQuery()
       .where([
-        eq('type', 'whisp-group'),
-        eq('registryId', registryId),
-        eq('contractAddress', contractAddress.toLowerCase()),
+        eq("type", "whisp-group"),
+        eq("registryId", registryId),
+        eq("contractAddress", contractAddress.toLowerCase()),
       ])
       .fetch();
 
@@ -143,21 +134,19 @@ export async function fetchGroupByRegistryId(
     }
 
     const entity = result.entities[0];
-    
+
     // Handle empty or malformed payload
     if (!entity.payload || entity.payload.length === 0) {
       return null;
     }
 
     const payloadString = bytesToString(entity.payload);
-    if (!payloadString || payloadString.trim() === '') {
+    if (!payloadString || payloadString.trim() === "") {
       return null;
     }
 
     const payload = JSON.parse(payloadString);
-    const attrs = Object.fromEntries(
-      entity.attributes.map(a => [a.key, a.value])
-    );
+    const attrs = Object.fromEntries(entity.attributes.map(a => [a.key, a.value]));
 
     return {
       entityKey: entity.entityKey,
@@ -168,7 +157,7 @@ export async function fetchGroupByRegistryId(
       category: attrs.category,
       creator: payload.creator as Address,
       createdAt: payload.createdAt,
-      chainId: parseInt(attrs.chainId || '534351'),
+      chainId: parseInt(attrs.chainId || "534351"),
       contractAddress: attrs.contractAddress as Address,
     };
   } catch (error) {
@@ -188,17 +177,15 @@ export async function fetchGroupsByCreator(
   const result = await publicClient
     .buildQuery()
     .where([
-      eq('type', 'whisp-group'),
-      eq('creator', creator.toLowerCase()),
-      eq('contractAddress', contractAddress.toLowerCase()),
+      eq("type", "whisp-group"),
+      eq("creator", creator.toLowerCase()),
+      eq("contractAddress", contractAddress.toLowerCase()),
     ])
     .fetch();
 
   return result.entities.map(entity => {
     const payload = JSON.parse(bytesToString(entity.payload));
-    const attrs = Object.fromEntries(
-      entity.attributes.map(a => [a.key, a.value])
-    );
+    const attrs = Object.fromEntries(entity.attributes.map(a => [a.key, a.value]));
 
     return {
       entityKey: entity.entityKey,
@@ -224,11 +211,10 @@ export async function searchGroupsByName(
   // Fetch all groups and filter client-side
   // Note: Arkiv query doesn't support full-text search, so we filter after fetching
   const allGroups = await fetchAllGroupsFromArkiv(publicClient, contractAddress);
-  
+
   const lowerSearch = searchTerm.toLowerCase();
-  return allGroups.filter(group => 
-    group.name.toLowerCase().includes(lowerSearch) ||
-    group.description.toLowerCase().includes(lowerSearch)
+  return allGroups.filter(
+    group => group.name.toLowerCase().includes(lowerSearch) || group.description.toLowerCase().includes(lowerSearch),
   );
 }
 
@@ -246,17 +232,12 @@ export async function subscribeToGroupCreations(
   onGroupCreated: (group: any) => void,
 ) {
   const stop = await publicClient.subscribeEntityEvents({
-    onEntityCreated: async (event) => {
+    onEntityCreated: async event => {
       try {
         const entity = await publicClient.getEntity(event.entityKey);
-        const attrs = Object.fromEntries(
-          entity.attributes.map(a => [a.key, a.value])
-        );
+        const attrs = Object.fromEntries(entity.attributes.map(a => [a.key, a.value]));
 
-        if (
-          attrs.type === 'whisp-group' &&
-          attrs.contractAddress?.toLowerCase() === contractAddress.toLowerCase()
-        ) {
+        if (attrs.type === "whisp-group" && attrs.contractAddress?.toLowerCase() === contractAddress.toLowerCase()) {
           const payload = JSON.parse(bytesToString(entity.payload));
           onGroupCreated({
             entityKey: entity.entityKey,
@@ -270,12 +251,11 @@ export async function subscribeToGroupCreations(
           });
         }
       } catch (err) {
-        console.error('[subscribeToGroupCreations] error:', err);
+        console.error("[subscribeToGroupCreations] error:", err);
       }
     },
-    onError: (err) => console.error('[subscribeEntityEvents] error:', err),
+    onError: err => console.error("[subscribeEntityEvents] error:", err),
   });
 
   return stop; // Call stop() to unsubscribe
 }
-

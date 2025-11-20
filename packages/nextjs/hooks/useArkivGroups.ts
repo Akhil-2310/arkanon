@@ -1,34 +1,33 @@
 /**
  * React hooks for Arkiv data storage
- * 
+ *
  * These hooks interact with Arkiv Mendoza testnet to store and retrieve
  * group metadata off-chain while keeping the core group logic on Scroll Sepolia.
  */
 
 /**
  * React hooks for Arkiv data storage
- * 
+ *
  * ⚠️ SECURITY: All write operations go through server-side API routes
  * to keep the Arkiv private key secure.
  */
-
 import { useEffect, useState } from "react";
+import { useDeployedContractInfo } from "./scaffold-eth";
 import {
+  type GroupMetadata,
   createArkivPublicClient,
   fetchAllGroupsFromArkiv,
   fetchGroupByRegistryId,
   fetchGroupsByCreator,
   searchGroupsByName,
-  type GroupMetadata,
 } from "~~/utils/arkiv/client";
-import { useDeployedContractInfo } from "./scaffold-eth";
 
 /**
  * Helper to check if Arkiv is configured on the server
  */
 async function checkArkivServerConfig(): Promise<boolean> {
   try {
-    const response = await fetch('/api/arkiv/health');
+    const response = await fetch("/api/arkiv/health");
     return response.ok;
   } catch {
     return false;
@@ -58,7 +57,7 @@ export function useArkivAllGroups(category?: string) {
         setLoading(true);
         const publicClient = createArkivPublicClient();
         const data = await fetchAllGroupsFromArkiv(publicClient, contractInfo.address, category);
-        
+
         if (mounted) {
           setGroups(data);
           setError(null);
@@ -108,7 +107,7 @@ export function useArkivGroup(registryId: string | undefined) {
         setLoading(true);
         const publicClient = createArkivPublicClient();
         const data = await fetchGroupByRegistryId(publicClient, registryId!, contractInfo!.address);
-        
+
         if (mounted) {
           setGroup(data);
           setError(null);
@@ -158,7 +157,7 @@ export function useArkivGroupsByCreator(creator: string | undefined) {
         setLoading(true);
         const publicClient = createArkivPublicClient();
         const data = await fetchGroupsByCreator(publicClient, creator as any, contractInfo!.address);
-        
+
         if (mounted) {
           setGroups(data);
           setError(null);
@@ -209,7 +208,7 @@ export function useArkivSearchGroups(searchTerm: string | undefined) {
         setLoading(true);
         const publicClient = createArkivPublicClient();
         const data = await searchGroupsByName(publicClient, searchTerm!, contractInfo!.address);
-        
+
         if (mounted) {
           setGroups(data);
           setError(null);
@@ -252,7 +251,7 @@ export function useStoreGroupOnArkiv() {
     checkArkivServerConfig().then(setIsConfigured);
   }, []);
 
-  const storeGroup = async (metadata: Omit<GroupMetadata, 'contractAddress' | 'chainId'>) => {
+  const storeGroup = async (metadata: Omit<GroupMetadata, "contractAddress" | "chainId">) => {
     if (!contractInfo?.address) {
       throw new Error("Contract info not available");
     }
@@ -260,10 +259,10 @@ export function useStoreGroupOnArkiv() {
     setIsStoring(true);
     try {
       // Call server-side API route
-      const response = await fetch('/api/arkiv/store-group', {
-        method: 'POST',
+      const response = await fetch("/api/arkiv/store-group", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           ...metadata,
@@ -274,7 +273,7 @@ export function useStoreGroupOnArkiv() {
 
       if (!response.ok) {
         const error = await response.json();
-        throw new Error(error.error || 'Failed to store on Arkiv');
+        throw new Error(error.error || "Failed to store on Arkiv");
       }
 
       const result = await response.json();
@@ -312,17 +311,17 @@ export function useStoreSignalOnArkiv() {
   }) => {
     setIsStoring(true);
     try {
-      const response = await fetch('/api/arkiv/store-signal', {
-        method: 'POST',
+      const response = await fetch("/api/arkiv/store-signal", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(metadata),
       });
 
       if (!response.ok) {
         const error = await response.json();
-        throw new Error(error.error || 'Failed to store signal on Arkiv');
+        throw new Error(error.error || "Failed to store signal on Arkiv");
       }
 
       const result = await response.json();
@@ -341,4 +340,3 @@ export function useStoreSignalOnArkiv() {
     isStoring,
   };
 }
-

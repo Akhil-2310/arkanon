@@ -10,8 +10,8 @@ export default function Page() {
           Privacy is inevitable.
         </h2>
         <p className="text-xl mb-8 max-w-3xl text-base-content opacity-70">
-          ArkAnon is a decentralized platform where you can form anonymous, interest-based groups, and cast votes or send
-          feedback without revealing your identity.
+          ArkAnon is a decentralized platform where you can form anonymous, interest-based groups, and cast votes or
+          send feedback without revealing your identity.
         </p>
         <div className="flex gap-4">
           <Link href="/create-group" className="btn btn-lg btn-primary font-bold shadow-xl">

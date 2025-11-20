@@ -2,11 +2,10 @@
  * Server-side API route for storing group metadata on Arkiv
  * This keeps the Arkiv private key secure on the server
  */
-
 import { NextRequest, NextResponse } from "next/server";
 import { createWalletClient, http } from "@arkiv-network/sdk";
-import { stringToPayload } from "@arkiv-network/sdk/utils";
 import { mendoza } from "@arkiv-network/sdk/chains";
+import { stringToPayload } from "@arkiv-network/sdk/utils";
 import { privateKeyToAccount } from "viem/accounts";
 
 const ARKIV_RPC = "https://mendoza.hoodi.arkiv.network/rpc";
@@ -23,39 +22,23 @@ export async function POST(request: NextRequest) {
   try {
     // Validate private key exists
     if (!ARKIV_PRIVATE_KEY) {
-      return NextResponse.json(
-        { error: "Arkiv not configured on server" },
-        { status: 500 }
-      );
+      return NextResponse.json({ error: "Arkiv not configured on server" }, { status: 500 });
     }
 
     // Parse request body
     const body = await request.json();
-    const {
-      registryId,
-      name,
-      description,
-      imageUrl,
-      category,
-      creator,
-      createdAt,
-      chainId,
-      contractAddress,
-    } = body;
+    const { registryId, name, description, imageUrl, category, creator, createdAt, chainId, contractAddress } = body;
 
     // Validate required fields
     if (!registryId || !name || !creator || !contractAddress) {
-      return NextResponse.json(
-        { error: "Missing required fields" },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
 
     // Create Arkiv wallet client
     const walletClient = createWalletClient({
       chain: mendoza,
       transport: http(ARKIV_RPC),
-      account: privateKeyToAccount(ARKIV_PRIVATE_KEY),
+      account: privateKeyToAccount(ARKIV_PRIVATE_KEY as `0x${string}`) as any,
     });
 
     // Prepare payload
@@ -92,10 +75,6 @@ export async function POST(request: NextRequest) {
     });
   } catch (error: any) {
     console.error("Error storing group on Arkiv:", error);
-    return NextResponse.json(
-      { error: error.message || "Failed to store on Arkiv" },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: error.message || "Failed to store on Arkiv" }, { status: 500 });
   }
 }
-

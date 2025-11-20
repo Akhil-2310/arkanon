@@ -40,7 +40,7 @@ function GroupCard({ registryId, onJoinGroup }: { registryId: number; onJoinGrou
     string,
     string,
     string,
-    string
+    string,
   ];
 
   if (!exists) return null;
@@ -61,9 +61,7 @@ function GroupCard({ registryId, onJoinGroup }: { registryId: number; onJoinGrou
           <h2 className="font-bold text-xl text-base-content">{name || `Group #${registryId}`}</h2>
           {category && <span className="badge badge-primary badge-sm">{category}</span>}
         </div>
-        <p className="text-sm text-base-content opacity-70">
-          {description || "No description provided"}
-        </p>
+        <p className="text-sm text-base-content opacity-70">{description || "No description provided"}</p>
         <p className="text-xs text-base-content opacity-50">Created: {formatDate(createdAt)}</p>
         <div className="flex gap-4 pt-2">
           <button className="btn btn-outline btn-sm" onClick={() => setShowDetails(true)}>
@@ -128,10 +126,9 @@ export default function BrowseGroups() {
   const router = useRouter();
   const { isConnected } = useAccount();
   const { identity, identityCommitment } = useSemaphoreIdentity();
-  const [refreshKey, setRefreshKey] = useState(0);
 
   // Read the total number of groups
-  const { data: nextGroupIndex, refetch: refetchGroups } = useScaffoldReadContract({
+  const { data: nextGroupIndex } = useScaffoldReadContract({
     contractName: "Whisp",
     functionName: "nextGroupIndex",
   });
@@ -139,11 +136,6 @@ export default function BrowseGroups() {
   const { writeContractAsync: writeWhispAsync } = useScaffoldWriteContract({
     contractName: "Whisp",
   });
-
-  const handleRefresh = () => {
-    setRefreshKey(prev => prev + 1);
-    refetchGroups();
-  };
 
   const handleJoinGroup = async (registryId: number) => {
     if (!isConnected) {
