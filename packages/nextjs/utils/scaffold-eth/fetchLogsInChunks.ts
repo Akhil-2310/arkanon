@@ -11,12 +11,12 @@ import { GetLogsParameters, Log, PublicClient } from "viem";
  */
 export async function fetchLogsInChunks<TAbiEvent extends any = undefined>(
   client: PublicClient,
-  params: Omit<GetLogsParameters<TAbiEvent>, "fromBlock" | "toBlock"> & {
+  params: Omit<GetLogsParameters<any>, "fromBlock" | "toBlock"> & {
     fromBlock: bigint;
     toBlock: bigint;
   },
   chunkSize: number = 5000,
-): Promise<Log<bigint, number, false, TAbiEvent>[]> {
+): Promise<Log<bigint, number, false, any>[]> {
   const { fromBlock, toBlock, ...restParams } = params;
 
   const latestBlock = toBlock;
@@ -29,14 +29,14 @@ export async function fetchLogsInChunks<TAbiEvent extends any = undefined>(
       ...restParams,
       fromBlock,
       toBlock: latestBlock,
-    } as any)) as Log<bigint, number, false, TAbiEvent>[];
+    } as any)) as Log<bigint, number, false, any>[];
   }
 
   // Otherwise, fetch in chunks
   console.log(
     `📊 Fetching logs from block ${fromBlock} to ${latestBlock} (${totalBlocks} blocks) in chunks of ${chunkSize}`,
   );
-  const allLogs: Log<bigint, number, false, TAbiEvent>[] = [];
+  const allLogs: Log<bigint, number, false, any>[] = [];
   let currentBlock = fromBlock;
   let chunkIndex = 0;
 
@@ -52,7 +52,7 @@ export async function fetchLogsInChunks<TAbiEvent extends any = undefined>(
         ...restParams,
         fromBlock: currentBlock,
         toBlock: endBlock,
-      } as any)) as Log<bigint, number, false, TAbiEvent>[];
+      } as any)) as Log<bigint, number, false, any>[];
 
       console.log(`  ✅ Chunk ${chunkIndex}: found ${logs.length} events`);
       allLogs.push(...logs);

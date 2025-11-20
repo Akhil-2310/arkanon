@@ -91,8 +91,8 @@ export async function fetchUserGroups(userAddress: string): Promise<GroupWithReg
     // Extract unique registryIds
     const registryIds = new Set<number>();
     for (const event of events) {
-      if (event.args && event.args.registryId !== undefined) {
-        registryIds.add(Number(event.args.registryId));
+      if ((event as any).args && (event as any).args.registryId !== undefined) {
+        registryIds.add(Number((event as any).args.registryId));
       }
     }
 
@@ -107,8 +107,17 @@ export async function fetchUserGroups(userAddress: string): Promise<GroupWithReg
       });
 
       if (groupData) {
-        // Contract returns: [groupId, creator, createdAt, exists]
-        const [groupId, creator, createdAt, exists] = groupData as readonly [bigint, string, bigint, boolean];
+        // Contract returns: [groupId, creator, createdAt, exists, name, description, imageUrl, category]
+        const [groupId, creator, createdAt, exists] = groupData as readonly [
+          bigint,
+          string,
+          bigint,
+          boolean,
+          string,
+          string,
+          string,
+          string,
+        ];
         if (exists) {
           groups.push({
             registryId,

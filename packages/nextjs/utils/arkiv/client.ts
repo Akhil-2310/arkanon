@@ -88,12 +88,12 @@ export async function fetchAllGroupsFromArkiv(
 
     console.log(`✅ Found ${result.entities.length} groups on Arkiv`);
 
-    return result.entities.map(entity => {
-      const payload = JSON.parse(bytesToString(entity.payload));
-      const attrs = Object.fromEntries(entity.attributes.map(a => [a.key, a.value]));
+    return result.entities.map((entity: any) => {
+      const payload = entity.payload ? JSON.parse(bytesToString(entity.payload)) : {};
+      const attrs = Object.fromEntries(entity.attributes.map((a: any) => [a.key, a.value]));
 
       return {
-        entityKey: entity.entityKey,
+        entityKey: entity.entityKey || entity.key || "",
         registryId: attrs.registryId,
         name: payload.name,
         description: payload.description,
@@ -133,7 +133,7 @@ export async function fetchGroupByRegistryId(
       return null;
     }
 
-    const entity = result.entities[0];
+    const entity: any = result.entities[0];
 
     // Handle empty or malformed payload
     if (!entity.payload || entity.payload.length === 0) {
@@ -146,10 +146,10 @@ export async function fetchGroupByRegistryId(
     }
 
     const payload = JSON.parse(payloadString);
-    const attrs = Object.fromEntries(entity.attributes.map(a => [a.key, a.value]));
+    const attrs = Object.fromEntries(entity.attributes.map((a: any) => [a.key, a.value]));
 
     return {
-      entityKey: entity.entityKey,
+      entityKey: entity.entityKey || entity.key || "",
       registryId: attrs.registryId,
       name: payload.name,
       description: payload.description,
@@ -183,12 +183,12 @@ export async function fetchGroupsByCreator(
     ])
     .fetch();
 
-  return result.entities.map(entity => {
-    const payload = JSON.parse(bytesToString(entity.payload));
-    const attrs = Object.fromEntries(entity.attributes.map(a => [a.key, a.value]));
+  return result.entities.map((entity: any) => {
+    const payload = entity.payload ? JSON.parse(bytesToString(entity.payload)) : {};
+    const attrs = Object.fromEntries(entity.attributes.map((a: any) => [a.key, a.value]));
 
     return {
-      entityKey: entity.entityKey,
+      entityKey: entity.entityKey || entity.key || "",
       registryId: attrs.registryId,
       name: payload.name,
       description: payload.description,
@@ -232,15 +232,15 @@ export async function subscribeToGroupCreations(
   onGroupCreated: (group: any) => void,
 ) {
   const stop = await publicClient.subscribeEntityEvents({
-    onEntityCreated: async event => {
+    onEntityCreated: async (event: any) => {
       try {
-        const entity = await publicClient.getEntity(event.entityKey);
-        const attrs = Object.fromEntries(entity.attributes.map(a => [a.key, a.value]));
+        const entity: any = await publicClient.getEntity(event.entityKey);
+        const attrs = Object.fromEntries(entity.attributes.map((a: any) => [a.key, a.value]));
 
-        if (attrs.type === "whisp-group" && attrs.contractAddress?.toLowerCase() === contractAddress.toLowerCase()) {
-          const payload = JSON.parse(bytesToString(entity.payload));
+        if (attrs.type === "whisp-group" && String(attrs.contractAddress || "").toLowerCase() === contractAddress.toLowerCase()) {
+          const payload = entity.payload ? JSON.parse(bytesToString(entity.payload)) : {};
           onGroupCreated({
-            entityKey: entity.entityKey,
+            entityKey: entity.entityKey || entity.key || "",
             registryId: attrs.registryId,
             name: payload.name,
             description: payload.description,
@@ -254,7 +254,7 @@ export async function subscribeToGroupCreations(
         console.error("[subscribeToGroupCreations] error:", err);
       }
     },
-    onError: err => console.error("[subscribeEntityEvents] error:", err),
+    onError: (err: any) => console.error("[subscribeEntityEvents] error:", err),
   });
 
   return stop; // Call stop() to unsubscribe

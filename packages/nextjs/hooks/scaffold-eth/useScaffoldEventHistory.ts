@@ -128,8 +128,8 @@ export const useScaffoldEventHistory = <
   const fromBlockValue =
     fromBlock !== undefined
       ? fromBlock
-      : deployedContractData && "deployedOnBlock" in deployedContractData && typeof deployedContractData.deployedOnBlock !== "object"
-        ? BigInt(deployedContractData.deployedOnBlock || 0)
+      : deployedContractData && "deployedOnBlock" in deployedContractData
+        ? BigInt((deployedContractData.deployedOnBlock as number) || 0)
         : 0n;
 
   const query = useInfiniteQuery({
