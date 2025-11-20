@@ -5,6 +5,10 @@
 
 ---
 
+## [Video](https://www.loom.com/share/fcd7f294c371423ba683e63f6f150438)
+
+## [Pitch](https://www.canva.com/design/DAG5QK7ND2s/X4mDaeVKc_8l0QlxefCU_g/edit)
+
 ## 🌐 TL;DR
 
 ArkAnon is a **privacy-first social platform** where verified group members can:
